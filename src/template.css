@@ -1,0 +1,13 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    display: grid;
+    height: 100vh;
+    grid-template: 
+        "project-header" 1fr
+        "todo-container" 15fr/ 1fr;
+    padding: 0;
+    margin: 0;
+}
+body div {
+    border: 1px solid black;
+}
