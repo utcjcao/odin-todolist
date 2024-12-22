@@ -1,4 +1,5 @@
 import "./sortFactory.js";
+import Todo from "./todo.js";
 
 class Project {
   constructor(title) {

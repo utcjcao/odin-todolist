@@ -3,11 +3,52 @@ body {
     display: grid;
     height: 100vh;
     grid-template: 
-        "project-header" 1fr
+        "project-container" 1fr
         "todo-container" 15fr/ 1fr;
     padding: 0;
     margin: 0;
 }
-body div {
+
+.project-container {
+    border: 1px solid grey;
+}
+
+.popup {
+    display: none;
+    position: fixed;
     border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 500px;
+    height: 300px;
+    background-color: white;
+}
+
+button {
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+
+input.title {
+    font-size: larger;
+}
+
+button#project-popup, button#todo-popup {
+    border: none;
+}
+
+input {
+    border: none;
 }
