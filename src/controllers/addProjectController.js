@@ -1,19 +1,21 @@
 import Project from "../models/project";
 import { updateProjDisplay } from "../views/updateProjDisplay";
+import { updateTodoDisplay } from "../views/updateTodoDisplay";
 
 export function addProjectController(app) {
-  const projectPopUpBtn = document.getElementById("add-project-button");
-  projectPopUpBtn.addEventListener("click", () => {
-    console.log("daf");
+  const addProjectBtn = document.getElementById("add-proj-button");
+  addProjectBtn.addEventListener("click", () => {
     let projectTitle = document.getElementById("proj-title").value;
+    document.getElementById("proj-title").value = "";
     if (projectTitle == "") {
       projectTitle = "placeholder project title";
     }
-    const newProj = new Project(projectTitle);
-    app.addProject(newProj);
-    updateProjDisplay(app);
+    app.addProject(projectTitle);
 
-    const projectPopDiv = document.getElementById("add-proj-popup");
+    const projectPopDiv = document.getElementById("add-proj-container");
     projectPopDiv.style.display = "none";
+
+    updateProjDisplay(app);
+    updateTodoDisplay(app);
   });
 }

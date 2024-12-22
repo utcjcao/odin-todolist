@@ -22,6 +22,20 @@ class Main {
   getCurrentProjId() {
     return this.currentProjectId;
   }
+  //   assuming that the curProj is not empty (-1)
+  addTodo(todo) {
+    console.log(todo, "this is ur todo");
+    let curProj = this.projects.find(
+      (project) => this.currentProjectId == project.id
+    );
+
+    if (curProj) {
+      console.log(curProj);
+      curProj.addTodo(todo); // Call the method if curProj is valid
+    } else {
+      console.log("No project found with currentProjectId");
+    }
+  }
 }
 
 export default Main;

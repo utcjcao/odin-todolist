@@ -1,8 +1,10 @@
+import { todoPopupController } from "../controllers/todoPopupController";
+
 export function updateTodoDisplay(app) {
   const todoContainerDiv = document.getElementById("todo-container");
   todoContainerDiv.innerHTML = "";
   const curProjId = app.getCurrentProjId();
-  if (curProjId != "-1") {
+  if (curProjId != -1) {
     const curProj = app.projects.find((p) => p.id === curProjId);
     for (let todo of curProj.todos) {
       const todoDiv = document.createElement("div");
@@ -25,10 +27,11 @@ export function updateTodoDisplay(app) {
 
       todoContainerDiv.appendChild(todoDiv);
     }
-  }
-  const addTodoBtn = document.createElement("button");
-  addTodoBtn.id = "todo-popup";
-  addTodoBtn.innerText = "add todo + ";
+    const addTodoBtn = document.createElement("button");
+    addTodoBtn.id = "todo-popup-button";
+    addTodoBtn.innerText = "add todo + ";
 
-  todoContainerDiv.appendChild(addTodoBtn);
+    todoContainerDiv.appendChild(addTodoBtn);
+    todoPopupController();
+  }
 }

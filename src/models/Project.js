@@ -1,5 +1,4 @@
 import "./sortFactory.js";
-import Todo from "./todo.js";
 
 class Project {
   constructor(title) {
@@ -7,9 +6,8 @@ class Project {
     this.id = crypto.randomUUID();
     this.todos = [];
   }
-  addTodo(title, dueDate, desc, priority) {
-    const newTodo = new Todo(title, dueDate, desc, priority);
-    this.todos.push(newTodo);
+  addTodo(todo) {
+    this.todos.push(todo);
   }
   deleteTodo(targetTodo) {
     this.todos = this.todos.filter((todo) => targetTodo.id != todo.id);
