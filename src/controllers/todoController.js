@@ -1,7 +1,8 @@
 import Todo from "../models/todo";
 import { updateTodoDisplay } from "../views/updateTodoDisplay";
+import { saveStorage } from "./storage";
 
-export function addTodoController(app) {
+function addTodoController(app) {
   const addTodoBtn = document.getElementById("add-todo-button");
   addTodoBtn.addEventListener("click", () => {
     let todoTitle = document.getElementById("todo-title").value;
@@ -19,11 +20,11 @@ export function addTodoController(app) {
       todoDescription = "placeholder todo description";
     }
     document.getElementById("todo-desc").value = "";
-    let todoDueDate = document.getElementById("todo-due-date").value;
+    let todoDueDate = document.getElementById("datepicker").value;
     if (todoDueDate == "") {
       todoDueDate = new Date();
     }
-    document.getElementById("todo-due-date").value = "";
+    document.getElementById("datepicker").value = "";
     const newTodo = new Todo(
       todoTitle,
       todoDueDate,
@@ -36,5 +37,17 @@ export function addTodoController(app) {
     todoPopDiv.style.display = "none";
 
     updateTodoDisplay(app);
+    saveStorage(app);
   });
 }
+
+function deleteTodoController(app, id, button) {
+  button.addEventListener("click", () => {
+    app.deleteTodo(id);
+    updateTodoDisplay(app);
+    console.log(app);
+  });
+  saveStorage(app);
+}
+
+export { addTodoController, deleteTodoController };

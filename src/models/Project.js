@@ -9,8 +9,8 @@ class Project {
   addTodo(todo) {
     this.todos.push(todo);
   }
-  deleteTodo(targetTodo) {
-    this.todos = this.todos.filter((todo) => targetTodo.id != todo.id);
+  deleteTodo(id) {
+    this.todos = this.todos.filter((todo) => id != todo.id);
   }
   sortTodos(sortName) {
     const sortFn = sortFactory(sortName);
